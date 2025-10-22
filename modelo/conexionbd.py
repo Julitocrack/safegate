@@ -1,22 +1,19 @@
 import pyodbc
-
-try:
-    # Cadena de conexión
-    conexion = pyodbc.connect(
-        "DRIVER={PostgreSQL Unicode};"
-        "SERVER=localhost;"
-        "PORT=5432;"
-        "DATABASE=safegate;"
-        "UID=postgres;"
-        "PWD=Jarojmro7;"
-    )
-
-    print("✅ Conexión exitosa a PostgreSQL")
-
-except Exception as e:
-    print("❌ Error al conectar:", e)
-
-finally:
-    if 'conexion' in locals():
-        conexion.close()
-        print("🔒 Conexión cerrada")
+class ConexionBD:
+    def _init_(self):
+        self.conexion=''
+    
+    def establecerConexionBD(self):
+        try:
+            self.conexion= pyodbc.connect(
+                'DRIVER={PostgreSQL Unicode};'
+                'SERVER=localhost;'
+                'DATABASE=safegate;'
+                'Trusted_Connection=yes;'
+                "PWD=Jarojmro7;"
+            )
+            print("Conexion exitosa")
+        except Exception as ex:
+            print("Error al conectar a la base de datos: " + str(ex))
+    def cerrarConexionBD(self):
+        self.conexion.close()
