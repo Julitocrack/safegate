@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>711</width>
+    <height>621</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    /* Fondo principal: Degradado oscuro y futurista */
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(30, 30, 40, 255), stop:1 rgba(15, 15, 25, 255));
+    border: 1px solid #00c0ff; /* Borde sutil azul eléctrico */
+    border-radius: 10px;
+}
+
+/* Título de la aplicación */
+QLabel#lbl_titulo {
+    color: #00e0ff; /* Azul eléctrico brillante */
+    font: bold 30pt &quot;Segoe UI&quot;, &quot;Arial&quot;; /* Fuente moderna */
+    border-bottom: 2px solid #00aaff; /* Línea de acento */
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    qproperty-alignment: AlignCenter; /* Centrar texto */
+}
+
+/* Etiquetas de Usuario/Contraseña */
+QLabel {
+    color: #a0a0a0; /* Gris claro */
+    font: 14pt &quot;Segoe UI&quot;;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Campos de entrada (Usuario y Contraseña) */
+QLineEdit {
+    background-color: rgba(60, 60, 80, 0.7); /* Fondo semi-transparente oscuro */
+    color: #e0e0e0; /* Texto gris muy claro */
+    border: 1px solid #0080ff; /* Borde azul suave */
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 15pt;
+    selection-background-color: #00e0ff; /* Resaltado de selección */
+}
+
+/* Foco en el campo seleccionado */
+QLineEdit:focus {
+    border: 2px solid #00c0ff; /* Borde azul eléctrico al editar */
+    background-color: rgba(70, 70, 90, 0.9); /* Más opaco */
+}
+
+/* Botones: Ingresar */
+QPushButton#btn_ingresar {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #0080ff, stop:1 #00c0ff); /* Degradado azul */
+    color: white;
+    font: bold 16pt &quot;Segoe UI&quot;;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    min-width: 180px;
+    letter-spacing: 1px; /* Espaciado de letras */
+    box-shadow: 0px 5px 10px rgba(0, 192, 255, 0.4); /* Sombra brillante */
+}
+
+/* Efecto Hover para Botón Ingresar */
+QPushButton#btn_ingresar:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #00aaff, stop:1 #00ffff);
+    box-shadow: 0px 7px 15px rgba(0, 192, 255, 0.6);
+}
+
+/* Botones: Registrar */
+QPushButton#btn_registrar {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #606060, stop:1 #808080); /* Degradado gris */
+    color: #e0e0e0;
+    font: 14pt &quot;Segoe UI&quot;;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    min-width: 180px;
+    letter-spacing: 0.5px;
+}
+
+/* Efecto Hover para Botón Registrar */
+QPushButton#btn_registrar:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #707070, stop:1 #909090);
+    color: white;
+}
+
+/* Etiqueta de error */
+QLabel#lbl_error {
+    color: #ff4040; /* Rojo brillante para errores */
+    font: bold 12pt &quot;Segoe UI&quot;;
+    margin-top: 15px;
+    qproperty-alignment: AlignCenter;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,8">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame_superior">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>295</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>SafeGate</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>295</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_central">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame_usurio">
+         <property name="minimumSize">
+          <size>
+           <width>400</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>0</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>41</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Usuario/Email</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txt_usuario"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Contraseña</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="txt_pass"/>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>41</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_ingresar">
+            <property name="text">
+             <string>Iniciar Sesion</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>124</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="lbl_error">
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>206</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>¿Eres Nuevo?</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_registrar">
+            <property name="text">
+             <string>Registrate</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>206</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
