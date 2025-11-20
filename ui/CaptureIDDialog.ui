@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>471</width>
+    <height>431</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>50</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* --- ESTILO PARA EL DIÁLOGO DE CAPTURA (QDialog) --- */
+QDialog {
+    background-color: #2b2b2b; /* Fondo oscuro */
+    color: #e0e0e0;
+}
+
+/* --- TÍTULO --- */
+QLabel {
+    color: #cccccc;
+    font-size: 12pt;
+    font-weight: 500;
+}
+/* Título principal de la ventana (Captura de Identificación) */
+QLabel {
+    color: #00bcd4; /* Cian para el título de proceso */
+    font-size: 18pt;
+    font-weight: bold;
+    padding: 0px;
+}
+
+/* --- ÁREA DE VIDEO FEED (QLabel: capture_feed_label) --- */
+/* Esta área es el widget central que recibe el video de la cámara */
+QLabel {
+    background-color: #000000; /* Fondo negro sólido para simular la cámara apagada */
+    border: 3px solid #00bcd4; /* Borde cian para resaltar el área de trabajo */
+    border-radius: 8px;
+    text-align: center;
+    color: #999999; /* Texto claro de placeholder */
+}
+
+/* --- BOTONES --- */
+/* Botón Capturar (Acción Primaria: Verde) */
+QPushButton#btn_tomar_foto {
+    background-color: #4CAF50; /* Verde para la acción de guardar/confirmar */
+    color: #1e1e1e; 
+    border: none;
+    border-radius: 6px;
+    padding: 3px 15px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+QPushButton#btn_tomar_foto:hover {
+    background-color: #43A047;
+}
+
+/* Botón Cerrar (Acción Secundaria/Negativa: Gris) */
+QPushButton#btn_cerrar {
+    background-color: #5a5a5a; /* Gris neutro */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 15px;
+    font-size: 14pt;
+}
+
+QPushButton#btn_cerrar:hover {
+    background-color: #6a6a6a;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>82</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Captura de Identificación</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>82</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_2">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="capture_feed_label">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame_3">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="btn_tomar_foto">
+        <property name="text">
+         <string>Capturar</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>227</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_cerrar">
+        <property name="text">
+         <string>Cerrar</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

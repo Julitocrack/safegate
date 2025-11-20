@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* style.qss - Código QSS Completo para Login y Dashboard */
+
+/* --- 1. ESTILO BASE DE LA APLICACIÓN --- */
+QMainWindow, QDialog {
+    background-color: #1e1e1e; /* Fondo muy oscuro principal */
+    color: #e0e0e0; /* Texto base claro */
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-size: 11pt;
+}
+
+/* --- 2. ESTILO PARA TÍTULOS Y ETIQUETAS --- */
+QLabel {
+    color: #cccccc;
+}
+
+/* Título principal (Usado en LoginWindow y MainWindow) */
+QLabel#lbl_titulo { 
+    color: #4CAF50; /* Acento verde para títulos */
+    font-size: 24pt;
+    font-weight: bold;
+    padding-bottom: 15px;
+}
+
+/* Título de estado/acceso en el video feed */
+QLabel#lbl_estado_acceso {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #00bcd4; /* Acento cian */
+}
+
+/* --- 3. ESTILO PARA WIDGETS DE LOGIN (QLineEdit) --- */
+QLineEdit {
+    background-color: #3c3c3c; /* Fondo de campo más oscuro */
+    border: 2px solid #5a5a5a; 
+    border-radius: 8px; 
+    padding: 10px;
+    color: #f0f0f0;
+    font-size: 14pt;
+    selection-background-color: #00bcd4;
+}
+
+QLineEdit:focus {
+    border: 2px solid #4CAF50; /* Borde verde al enfocar */
+}
+
+/* --- 4. ESTILO PARA BOTONES (Login y MainWindow) --- */
+/* Botón de Acceder (Login) y Registro Manual (Dashboard) */
+QPushButton#btn_acceder, QPushButton#btn_registro_manual {
+    background-color: #00bcd4; /* Fondo Cian Vibrante */
+    color: #1e1e1e; 
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 14pt;
+    font-weight: bold;
+    min-height: 40px; 
+}
+
+QPushButton#btn_acceder:hover, QPushButton#btn_registro_manual:hover {
+    background-color: #00a8b9;
+}
+
+QPushButton#btn_acceder:pressed, QPushButton#btn_registro_manual:pressed {
+    background-color: #0093a3;
+}
+
+
+/* --- 5. ESTILOS ESPECÍFICOS DE MAINWINDOW --- */
+
+/* Área de Video Feed (QLabel: video_feed_label) */
+QLabel#video_feed_label {
+    background-color: #000000; /* Fondo negro sólido para el feed */
+    border: 3px solid #333333; 
+    border-radius: 8px;
+}
+
+/* Tabla de Bitácora (QTableWidget: tabla_bitacora) */
+QTableWidget#tabla_bitacora {
+    background-color: #252526; /* Fondo de tabla más oscuro */
+    border: 1px solid #444444;
+    gridline-color: #383838; 
+    color: #f0f0f0;
+    selection-background-color: #4CAF50; /* Acento verde al seleccionar fila */
+    selection-color: #1e1e1e; 
+    font-size: 10pt;
+}
+
+/* Cabeceras de la tabla (QTableWidget) */
+QHeaderView::section {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    padding: 5px;
+    border: 1px solid #444444;
+    font-weight: bold;
+}
+
+/* Scrollbars */
+QScrollBar:vertical, QScrollBar:horizontal {
+    border: none;
+    background: #252526;
+    width: 10px;
+}
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background: #555555;
+    min-height: 20px;
+    border-radius: 4px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>50</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>261</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>SafeGate - Monitoreo de Accesos</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>260</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_2">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>230</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="video_feed_label">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>20</y>
+            <width>261</width>
+            <height>161</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_5">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QPushButton" name="btn_registro_manual">
+            <property name="text">
+             <string>Registrar Visita</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QFrame" name="frame_3">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QFrame" name="frame_7">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>50</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>260</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Bitácora de eventos recientes</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>259</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_6">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QTableWidget" name="tabla_bitacora">
+            <property name="minimumSize">
+             <size>
+              <width>724</width>
+              <height>146</height>
+             </size>
+            </property>
+            <property name="selectionBehavior">
+             <enum>QAbstractItemView::SelectItems</enum>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+            <attribute name="horizontalHeaderVisible">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="horizontalHeaderCascadingSectionResizes">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>160</number>
+            </attribute>
+            <attribute name="horizontalHeaderMinimumSectionSize">
+             <number>19</number>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Hora</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Estado</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Usuario/Visitante</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
