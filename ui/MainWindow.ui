@@ -207,10 +207,10 @@ QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
          <widget class="QLabel" name="video_feed_label">
           <property name="geometry">
            <rect>
-            <x>50</x>
-            <y>20</y>
-            <width>261</width>
-            <height>161</height>
+            <x>0</x>
+            <y>0</y>
+            <width>371</width>
+            <height>211</height>
            </rect>
           </property>
           <property name="text">

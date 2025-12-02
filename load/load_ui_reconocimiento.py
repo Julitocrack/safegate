@@ -81,41 +81,49 @@ class MainWindow(QtWidgets.QMainWindow):
     def actualizar_bitacora_reciente(self):
         """
         Consulta la DB, llena el QTableWidget (tabla_bitacora) y lo formatea.
-        Este método se llama al iniciar y después de cada registro manual o automático.
+        Ahora espera 4 columnas: momento, estado, nombre_completo, direccion_destino.
         """
-        # 1. Obtener los datos de la base de datos
+        # 1. Obtener los datos de la base de datos (Ahora devuelve 4 columnas)
         datos = self.db.obtener_bitacora_reciente(limite=15)
         
         # 2. Preparar el widget
         self.tabla_bitacora.setRowCount(len(datos))
-        
-        # Opcional: Asegúrate de que las cabeceras estén configuradas (Hora, Estado, Usuario/Visitante)
-        self.tabla_bitacora.setColumnCount(3) # Si tiene 3 columnas visibles
+        self.tabla_bitacora.setColumnCount(3) 
         
         # 3. Iterar y llenar la tabla
-        for fila, (momento, estado, nombre_o_destino) in enumerate(datos):
+        # DESEMPAQUETAR 4 VALORES: (momento, estado, nombre_completo, direccion_destino)
+        for fila, (momento, estado, nombre_completo, direccion_destino) in enumerate(datos):
             
-            # Formatear la hora
-            # .strftime() requiere que 'momento' sea un objeto datetime (lo cual es por defecto en psycopg2)
             hora_str = momento.strftime('%Y-%m-%d %H:%M:%S') 
             
-            # Determinar el color de la fila basado en el estado (opcional, pero visualmente útil)
-            if estado == 'Denegado':
-                color = QColor(255, 100, 100) # Rojo claro
-            elif estado in ['Concedido', 'Manual']:
-                color = QColor(100, 255, 100) # Verde claro
+            # --- LÓGICA DE COMBINACIÓN PARA LA COLUMNA FINAL ---
+            if estado == 'Manual':
+                # Si es manual, combinamos Nombre del Visitante y Dirección de Destino
+                nombre_para_bitacora = f"{nombre_completo} -> Dir: {direccion_destino}"
+                color_fondo = QColor(0, 150, 136) # Cian para Manual
+            elif estado == 'Concedido':
+                # Si es Concedido, solo mostramos el nombre del Colono
+                nombre_para_bitacora = nombre_completo
+                color_fondo = QColor(76, 175, 80) # Verde para Concedido
             else:
-                color = QColor(200, 200, 200) # Gris neutro
+                # Esto es un fallback, ya que la consulta SQL filtra 'Denegado'
+                nombre_para_bitacora = nombre_completo
+                color_fondo = QColor(60, 60, 60) # Gris neutro
+            # ----------------------------------------------------
 
+            # Determinar el color de la fila basado en el estado (la lógica ya la tienes)
+            # ... (el bloque de asignación de color fue integrado arriba para claridad)
+            
             # Llenar las celdas
             items = [
                 QtWidgets.QTableWidgetItem(hora_str),
                 QtWidgets.QTableWidgetItem(estado),
-                QtWidgets.QTableWidgetItem(nombre_o_destino)
+                QtWidgets.QTableWidgetItem(nombre_para_bitacora) # Usamos la cadena combinada
             ]
             
             for col, item in enumerate(items):
-                item.setBackground(color)
+                item.setBackground(color_fondo)
+                item.setForeground(QColor(255, 255, 255))
                 self.tabla_bitacora.setItem(fila, col, item)
 
         # 4. Ajustar el ancho de las columnas
